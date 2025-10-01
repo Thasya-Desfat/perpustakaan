@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <style>
+    .books { fill: #1e3c72 }
+    .shelf { fill: #2a5298 }
+    .student { fill: #64b5f6 }
+  </style>
+  <g class="library-scene">
+    <rect class="shelf" x="100" y="200" width="600" height="20"/>
+    <rect class="shelf" x="100" y="300" width="600" height="20"/>
+    <rect class="shelf" x="100" y="400" width="600" height="20"/>
+    
+    <!-- Books on shelves -->
+    <g class="books">
+      <rect x="120" y="150" width="30" height="50"/>
+      <rect x="160" y="150" width="30" height="50"/>
+      <rect x="200" y="150" width="30" height="50"/>
+      <!-- More books... -->
+    </g>
+
+    <!-- Student reading -->
+    <g class="student">
+      <circle cx="400" cy="300" r="40"/>
+      <rect x="380" y="340" width="40" height="60"/>
+    </g>
+  </g>
+</svg>
