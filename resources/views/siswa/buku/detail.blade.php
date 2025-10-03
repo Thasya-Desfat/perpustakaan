@@ -131,7 +131,7 @@
 
         .meta-info-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 1fr 300px;
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -361,45 +361,9 @@
                 <div class="info-section">
                     <h1 class="book-title">{{ $buku->judul }}</h1>
 
-                    <!-- Pengarang -->
-                    <div class="pengarang-section">
-                        <div class="pengarang-item">
-                            <span class="pengarang-icon">👤</span>
-                            <span class="pengarang-label">Pengarang:</span>
-                            <span class="pengarang-value">{{ $buku->penulis }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Grid Layout: Meta Info & Sinopsis -->
+                    <!-- Grid Layout: Sinopsis & Meta Info -->
                     <div class="meta-info-grid">
-                        <!-- Left Column: Meta Info -->
-                        <div class="meta-column">
-                            <div class="meta-item-box">
-                                <div class="meta-item-label">
-                                    <span class="meta-icon">📅</span>
-                                    <span class="meta-label">Tahun Terbit</span>
-                                </div>
-                                <div class="meta-value">{{ $buku->tahun_terbit }}</div>
-                            </div>
-
-                            <div class="meta-item-box">
-                                <div class="meta-item-label">
-                                    <span class="meta-icon">📑</span>
-                                    <span class="meta-label">Kategori</span>
-                                </div>
-                                <div class="meta-value">{{ ucfirst($buku->kategori) }}</div>
-                            </div>
-
-                            <div class="meta-item-box">
-                                <div class="meta-item-label">
-                                    <span class="meta-icon">📦</span>
-                                    <span class="meta-label">Stok Tersedia</span>
-                                </div>
-                                <div class="meta-value">{{ $buku->stok }} buku</div>
-                            </div>
-                        </div>
-
-                        <!-- Right Column: Sinopsis -->
+                        <!-- Left Column: Sinopsis -->
                         <div>
                             <div class="section-title">
                                 <span>📖</span>
@@ -407,6 +371,41 @@
                             </div>
                             <div class="sinopsis-text">
                                 {{ $buku->sinopsis ?? 'Tidak ada sinopsis yang tersedia untuk buku ini.' }}
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Meta Info -->
+                        <div class="meta-column">
+                            <div class="meta-item-box">
+                                <div class="meta-item-label">
+                                    <span class="meta-icon">�</span>
+                                    <span class="meta-label">Pengarang</span>
+                                </div>
+                                <div class="meta-value">{{ $buku->penulis }}</div>
+                            </div>
+
+                            <div class="meta-item-box">
+                                <div class="meta-item-label">
+                                    <span class="meta-icon">�</span>
+                                    <span class="meta-label">Tahun Terbit</span>
+                                </div>
+                                <div class="meta-value">{{ $buku->tahun_terbit }}</div>
+                            </div>
+
+                            <div class="meta-item-box">
+                                <div class="meta-item-label">
+                                    <span class="meta-icon">�</span>
+                                    <span class="meta-label">Kategori</span>
+                                </div>
+                                <div class="meta-value">{{ ucfirst($buku->kategori) }}</div>
+                            </div>
+
+                            <div class="meta-item-box">
+                                <div class="meta-item-label">
+                                    <span class="meta-icon">�</span>
+                                    <span class="meta-label">Stok Tersedia</span>
+                                </div>
+                                <div class="meta-value">{{ $buku->stok }} buku</div>
                             </div>
                         </div>
                     </div>
