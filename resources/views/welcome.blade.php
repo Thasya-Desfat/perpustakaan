@@ -463,20 +463,16 @@
                     </a>
                 @endif
             @else
-                <a href="{{ route('login') }}" 
-                   style="padding: 8px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;
-                          color: #1e3c72; border: 2px solid #1e3c72; transition: all 0.3s ease;"
-                   onmouseover="this.style.background='#1e3c72'; this.style.color='white'"
-                   onmouseout="this.style.background='transparent'; this.style.color='#1e3c72'">
-                    <span style="font-size: 16px;">🔑</span> Masuk
-                </a>
-                <a href="{{ route('register') }}" 
-                   style="padding: 8px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;
-                          background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;
-                          transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
-                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'"
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)'">
-                    <span style="font-size: 16px;">✨</span> Daftar
+                <a href="{{ route('login') }}"
+                   style="display: inline-flex; align-items: center; gap: 10px;
+                          background: white; color: #1e3c72; text-decoration: none;
+                          padding: 15px 30px; border-radius: 12px; font-weight: 700;
+                          box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'">
+                    <span style="font-size: 24px;">📚</span>
+                    Lihat Semua Buku
+                    <span style="font-size: 24px;">→</span>
                 </a>
             @endauth
         </div>

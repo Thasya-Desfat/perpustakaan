@@ -359,7 +359,35 @@
 
                 <!-- Info Section -->
                 <div class="info-section">
-                    <h1 class="book-title">{{ $buku->judul }}</h1>
+                    <!-- Error/Success Messages -->
+                    @if(session('success'))
+                        <div style="background: #d1fae5; border: 1px solid #10b981; color: #065f46; 
+                                    padding: 15px 20px; border-radius: 10px; margin-bottom: 20px;
+                                    display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 20px;">✓</span>
+                            <span>{{ session('success') }}</span>
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div style="background: #fee2e2; border: 1px solid #ef4444; color: #991b1b; 
+                                    padding: 15px 20px; border-radius: 10px; margin-bottom: 20px;
+                                    display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 20px;">⚠️</span>
+                            <span>{{ session('error') }}</span>
+                        </div>
+                    @endif
+
+                    <h1 class="book-title" style="margin-bottom: 15px;">{{ $buku->judul }}</h1>
+                    
+                    <!-- ID Buku -->
+                    <div style="margin-bottom: 40px;">
+                        <span style="background: #e3f2fd; color: #1e3c72; padding: 8px 16px; border-radius: 8px; 
+                                     font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                            <span>🆔</span>
+                            <span>ID Buku: #{{ str_pad($buku->id, 4, '0', STR_PAD_LEFT) }}</span>
+                        </span>
+                    </div>
 
                     <!-- Grid Layout: Sinopsis & Meta Info -->
                     <div class="meta-info-grid">
@@ -424,22 +452,20 @@
                     @endif
 
                     <div class="action-buttons">
-                        <form action="{{ route('siswa.buku.pinjam', $buku->id) }}" method="POST" style="flex: 1;">
-                            @csrf
-                            <button type="submit" class="btn btn-primary" 
-                                {{ ($buku->stok <= 0 || $activePeminjaman) ? 'disabled' : '' }}>
-                                <span>📚</span>
-                                <span>
-                                    @if($activePeminjaman)
-                                        Sudah Dipinjam
-                                    @elseif($buku->stok <= 0)
-                                        Stok Habis
-                                    @else
-                                        Pinjam Buku
-                                    @endif
-                                </span>
-                            </button>
-                        </form>
+                        <a href="{{ route('siswa.buku.pinjam.form', $buku->id) }}" 
+                           class="btn btn-primary {{ ($buku->stok <= 0 || $activePeminjaman) ? 'disabled' : '' }}"
+                           style="{{ ($buku->stok <= 0 || $activePeminjaman) ? 'pointer-events: none; opacity: 0.6;' : '' }}">
+                            <span>📚</span>
+                            <span>
+                                @if($activePeminjaman)
+                                    Sudah Dipinjam
+                                @elseif($buku->stok <= 0)
+                                    Stok Habis
+                                @else
+                                    Pinjam Buku
+                                @endif
+                            </span>
+                        </a>
 
                         <form action="{{ route('siswa.toggleFavorite', $buku->id) }}" method="POST" style="flex: 1;">
                             @csrf
