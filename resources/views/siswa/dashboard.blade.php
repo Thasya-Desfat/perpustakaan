@@ -35,52 +35,9 @@
     </div>
 </div>
 
-<div style="display: flex; min-height: 85vh; background: #f8fafc; padding: 20px;">
-    {{-- Sidebar --}}
-    <div style="width: 280px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <h3 style="color: #1e3c72; margin-bottom: 25px; font-size: 20px; font-weight: 600;">Menu Navigasi</h3>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 15px;">
-                <button onclick="showTab('buku')" class="menu-btn" style="width: 100%; text-align: left; padding: 12px 20px; border-radius: 10px; border: none; background: #f8fafc; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 20px;">📚</span>
-                    <div>
-                        <div style="font-weight: 600; color: #1e3c72;">Daftar Buku</div>
-                        <div style="font-size: 12px; color: #64748b;">Lihat koleksi perpustakaan</div>
-                    </div>
-                </button>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <button onclick="showTab('riwayat')" class="menu-btn" style="width: 100%; text-align: left; padding: 12px 20px; border-radius: 10px; border: none; background: #f8fafc; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 20px;">📋</span>
-                    <div>
-                        <div style="font-weight: 600; color: #1e3c72;">Riwayat Peminjaman</div>
-                        <div style="font-size: 12px; color: #64748b;">Lihat aktivitas peminjaman</div>
-                    </div>
-                </button>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <button onclick="showTab('favorite')" class="menu-btn" style="width: 100%; text-align: left; padding: 12px 20px; border-radius: 10px; border: none; background: #f8fafc; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 20px;">⭐</span>
-                    <div>
-                        <div style="font-weight: 600; color: #1e3c72;">Favorite</div>
-                        <div style="font-size: 12px; color: #64748b;">Tulisan favorite mu</div>
-                    </div>
-                </button>
-            </li>
-            <li>
-                <button onclick="showTab('profil')" class="menu-btn" style="width: 100%; text-align: left; padding: 12px 20px; border-radius: 10px; border: none; background: #f8fafc; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 20px;">👤</span>
-                    <div>
-                        <div style="font-weight: 600; color: #1e3c72;">Profil Saya</div>
-                        <div style="font-size: 12px; color: #64748b;">Pengaturan akun</div>
-                    </div>
-                </button>
-            </li>
-        </ul>
-    </div>
-
+<div style="min-height: 85vh; background: #f8fafc; padding: 20px;">
     {{-- Main Content --}}
-    <div style="flex: 1; margin-left: 25px;">
+    <div style="max-width: 1400px; margin: 0 auto;">
         <div style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
             {{-- Tambahkan ini untuk notifikasi --}}
             @if(session('success'))
@@ -111,78 +68,6 @@
             @endphp
             <input type="hidden" id="hasLate" value="{{ $hasLate ? '1' : '0' }}">
             <input type="hidden" id="lateTitles" value="{{ implode(', ', $lateTitles) }}">
-
-            <!-- Welcome Banner -->
-            <div style="background: linear-gradient(135deg, #1e3c72, #2a5298); border-radius: 20px; padding: 30px; margin-bottom: 30px; position: relative; overflow: hidden;">
-                <!-- Decorative Elements -->
-                <div style="position: absolute; top: -30px; right: -30px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-                <div style="position: absolute; bottom: -20px; left: -20px; width: 100px; height: 100px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
-                
-                <!-- Welcome Message -->
-                <div style="position: relative; z-index: 2; display: flex; align-items: center; gap: 20px;">
-                    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <span style="font-size: 40px;">👋</span>
-                    </div>
-                    <div>
-                        <h2 style="color: white; font-size: 28px; font-weight: 700; margin: 0 0 10px 0; 
-                                   text-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                            Selamat Datang di Perpustakaan Digital
-                        </h2>
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 50px; 
-                                       color: white; font-size: 14px; display: flex; align-items: center; gap: 5px;">
-                                <span style="font-size: 16px;">👤</span>
-                                Anda login sebagai Siswa
-                            </span>
-                            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 50px; 
-                                       color: white; font-size: 14px; display: flex; align-items: center; gap: 5px;">
-                                <span style="font-size: 16px;">📚</span>
-                                Perpustakaan Sekolah
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Statistik Peminjaman --}}
-            @php
-                $total = isset($peminjamans) ? $peminjamans->count() : 0;
-                $sedangDipakai = isset($peminjamans) ? $peminjamans->where('status', 'dipinjam')->count() : 0;
-                $selesai = isset($peminjamans) ? $peminjamans->where('status', 'dikembalikan')->count() : 0;
-                $terlambat = isset($peminjamans) ? $peminjamans->where('status', 'dipinjam')->filter(function($p) {
-                    return $p->tanggal_kembali && now() > \Carbon\Carbon::parse($p->tanggal_kembali);
-                })->count() : 0;
-            @endphp
-            <div style="display: flex; gap: 20px; margin-bottom: 35px; flex-wrap: wrap;">
-                <div style="flex:1; min-width:180px; background: #e3f2fd; color: #1e3c72; border-radius: 14px; padding: 18px 0; text-align: center; font-weight: 700; font-size: 18px; box-shadow: 0 2px 10px rgba(30,60,114,0.06);">
-                    <span style="font-size: 22px; margin-right: 6px;">📚</span> Dipinjam: {{ $total }}
-                </div>
-                <div style="flex:1; min-width:180px; background: #fff8e1; color: #f59e0b; border-radius: 14px; padding: 18px 0; text-align: center; font-weight: 700; font-size: 18px; box-shadow: 0 2px 10px rgba(245,158,11,0.06);">
-                    <span style="font-size: 22px; margin-right: 6px;">📖</span> Sedang Dipakai: {{ $sedangDipakai }}
-                </div>
-                <div style="flex:1; min-width:180px; background: #e8f5e9; color: #22c55e; border-radius: 14px; padding: 18px 0; text-align: center; font-weight: 700; font-size: 18px; box-shadow: 0 2px 10px rgba(34,197,94,0.06);">
-                    <span style="font-size: 22px; margin-right: 6px;">✅</span> Selesai: {{ $selesai }}
-                </div>
-                <div style="flex:1; min-width:180px; background: #fee2e2; color: #dc2626; border-radius: 14px; padding: 18px 0; text-align: center; font-weight: 700; font-size: 18px; box-shadow: 0 2px 10px rgba(220,38,38,0.06);">
-                    <span style="font-size: 22px; margin-right: 6px;">⏰</span> Terlambat: {{ $terlambat }}
-                </div>
-            </div>
-
-            {{-- Alert Messages --}}
-            {{-- HAPUS BLOK INI: --}}
-            {{--
-            @if(session('success'))
-            <div class="alert alert-success" style="margin-bottom: 20px;">
-                {{ session('success') }}
-            </div>
-            @endif
-
-            @if(session('info'))
-            <div class="alert alert-info" style="margin-bottom: 20px;">
-                {{ session('info') }}
-            </div>
-            @endif
-            --}}
             
             {{-- Tab Content --}}
             <div id="tab-buku" class="tab-content">
@@ -190,20 +75,112 @@
                     <h3 style="color: #1e3c72; font-size: 24px; font-weight: 600;">📚 Koleksi Buku</h3>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;">
+                {{-- Search and Filter Section --}}
+                <div style="background: white; border-radius: 15px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: end;">
+                        {{-- Search Input --}}
+                        <div style="flex: 1; min-width: 250px;">
+                            <label style="display: block; color: #1e3c72; font-weight: 600; margin-bottom: 8px; font-size: 14px;">
+                                <span style="margin-right: 5px;">🔍</span> Cari Buku
+                            </label>
+                            <input type="text" id="searchInput" placeholder="Cari judul buku..."
+                                   style="width: 100%; padding: 12px 45px 12px 15px; border: 2px solid #e2e8f0; 
+                                          border-radius: 10px; font-size: 15px; transition: all 0.3s ease;
+                                          background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748b%22 stroke-width=%222%22><circle cx=%2211%22 cy=%2211%22 r=%228%22/><path d=%22m21 21-4.35-4.35%22/></svg>') no-repeat right 15px center;"
+                                   onfocus="this.style.borderColor='#1e3c72'; this.style.boxShadow='0 0 0 3px rgba(30,60,114,0.1)'"
+                                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'"
+                                   onkeyup="filterBooks()">
+                        </div>
+
+                        {{-- Category Filter --}}
+                        <div style="min-width: 180px;">
+                            <label style="display: block; color: #1e3c72; font-weight: 600; margin-bottom: 8px; font-size: 14px;">
+                                <span style="margin-right: 5px;">📑</span> Kategori
+                            </label>
+                            <select id="categoryFilter" onchange="filterBooks()"
+                                    style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; 
+                                           border-radius: 10px; font-size: 15px; transition: all 0.3s ease;
+                                           background: white; cursor: pointer;"
+                                    onfocus="this.style.borderColor='#1e3c72'; this.style.boxShadow='0 0 0 3px rgba(30,60,114,0.1)'"
+                                    onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                                <option value="">Semua Kategori</option>
+                                <option value="fiksi">Fiksi</option>
+                                <option value="non fiksi">Non Fiksi</option>
+                                <option value="buku mata pelajaran">Buku Mata Pelajaran</option>
+                            </select>
+                        </div>
+
+                        {{-- Author Filter --}}
+                        <div style="min-width: 180px;">
+                            <label style="display: block; color: #1e3c72; font-weight: 600; margin-bottom: 8px; font-size: 14px;">
+                                <span style="margin-right: 5px;">👤</span> Pengarang
+                            </label>
+                            <select id="authorFilter" onchange="filterBooks()"
+                                    style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; 
+                                           border-radius: 10px; font-size: 15px; transition: all 0.3s ease;
+                                           background: white; cursor: pointer;"
+                                    onfocus="this.style.borderColor='#1e3c72'; this.style.boxShadow='0 0 0 3px rgba(30,60,114,0.1)'"
+                                    onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                                <option value="">Semua Pengarang</option>
+                                @php
+                                    $authors = isset($bukus) ? $bukus->pluck('penulis')->unique()->sort()->values() : collect();
+                                @endphp
+                                @foreach($authors as $author)
+                                    <option value="{{ strtolower($author) }}">{{ $author }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        {{-- Year Filter --}}
+                        <div style="min-width: 150px;">
+                            <label style="display: block; color: #1e3c72; font-weight: 600; margin-bottom: 8px; font-size: 14px;">
+                                <span style="margin-right: 5px;">📅</span> Tahun Terbit
+                            </label>
+                            <select id="yearFilter" onchange="filterBooks()"
+                                    style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; 
+                                           border-radius: 10px; font-size: 15px; transition: all 0.3s ease;
+                                           background: white; cursor: pointer;"
+                                    onfocus="this.style.borderColor='#1e3c72'; this.style.boxShadow='0 0 0 3px rgba(30,60,114,0.1)'"
+                                    onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                                <option value="">Semua Tahun</option>
+                                @php
+                                    $years = isset($bukus) ? $bukus->pluck('tahun_terbit')->unique()->sort()->reverse()->values() : collect();
+                                @endphp
+                                @foreach($years as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        {{-- Reset Button --}}
+                        <button onclick="resetFilter()" 
+                                style="padding: 12px 24px; background: #f1f5f9; color: #1e3c72; 
+                                       border: 2px solid #e2e8f0; border-radius: 10px; font-weight: 600;
+                                       cursor: pointer; transition: all 0.3s ease; font-size: 15px;
+                                       display: flex; align-items: center; gap: 8px;"
+                                onmouseover="this.style.background='#e2e8f0'"
+                                onmouseout="this.style.background='#f1f5f9'">
+                            <span>🔄</span> Reset
+                        </button>
+                    </div>
+
+                    {{-- Search Results Info --}}
+                    <div id="searchInfo" style="margin-top: 15px; padding: 10px 15px; background: #f0f7ff; 
+                                               border-radius: 8px; color: #1e3c72; font-size: 14px; display: none;">
+                        <span id="searchInfoText"></span>
+                    </div>
+                </div>
+
+                <div id="bookGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;">
                     @foreach(isset($bukus) ? $bukus : [] as $buku)
-                    <div class="book-card"
-                         onclick="showPinjamModal(
-                            {{ $buku->id }},
-                            '{{ addslashes($buku->judul) }}',
-                            '{{ addslashes($buku->penulis) }}',
-                            '{{ $buku->kategori }}',
-                            '{{ $buku->tahun_terbit }}',
-                            '{{ addslashes($buku->sinopsis) }}',
-                            '{{ $buku->image ? asset('storage/'.$buku->image) : '' }}'
-                         )"
-                         style="background: white; border-radius: 20px; overflow: hidden; transition: all 0.3s ease; cursor: pointer; position: relative;
-                                border: 1px solid #e5e7eb; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.05);"
+                    <a href="{{ route('siswa.buku.detail', $buku->id) }}" class="book-card" data-judul="{{ strtolower($buku->judul) }}" 
+                         data-penulis="{{ strtolower($buku->penulis) }}" 
+                         data-kategori="{{ strtolower($buku->kategori) }}" 
+                         data-tahun="{{ $buku->tahun_terbit }}"
+                         style="background: white; border-radius: 20px; overflow: hidden; transition: all 0.3s ease; 
+                                cursor: pointer; position: relative; text-decoration: none;
+                                border: 1px solid #e5e7eb; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                                display: block;"
                          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'"
                          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'">
                         
@@ -266,15 +243,15 @@
                                 </p>
                             </div>
 
-                            <!-- Action Button -->
-                            <button style="width: 100%; background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;
+                            <!-- View Details Button -->
+                            <div style="width: 100%; background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;
                                          border: none; padding: 14px; border-radius: 12px; font-weight: 600; font-size: 14px;
                                          display: flex; align-items: center; justify-content: center; gap: 8px;
                                          transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(30,60,114,0.2);">
-                                <span>📚</span> Pinjam Buku
-                            </button>
+                                <span>📚</span> Lihat Detail
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     @endforeach
                 </div>
 
@@ -674,6 +651,102 @@
 </div>
 
 <script>
+function filterBooks() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
+    const authorFilter = document.getElementById('authorFilter').value.toLowerCase();
+    const yearFilter = document.getElementById('yearFilter').value;
+    const bookCards = document.querySelectorAll('.book-card');
+    const searchInfo = document.getElementById('searchInfo');
+    const searchInfoText = document.getElementById('searchInfoText');
+    
+    let visibleCount = 0;
+    let totalCount = bookCards.length;
+
+    bookCards.forEach(card => {
+        const judul = card.getAttribute('data-judul') || '';
+        const penulis = card.getAttribute('data-penulis') || '';
+        const kategori = card.getAttribute('data-kategori') || '';
+        const tahun = card.getAttribute('data-tahun') || '';
+
+        // Check if matches search (only by title now)
+        const matchesSearch = searchInput === '' || judul.includes(searchInput);
+
+        // Check if matches category
+        const matchesCategory = categoryFilter === '' || kategori === categoryFilter;
+
+        // Check if matches author
+        const matchesAuthor = authorFilter === '' || penulis === authorFilter;
+
+        // Check if matches year
+        const matchesYear = yearFilter === '' || tahun === yearFilter;
+
+        if (matchesSearch && matchesCategory && matchesAuthor && matchesYear) {
+            card.style.display = 'block';
+            visibleCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Show search info
+    if (searchInput !== '' || categoryFilter !== '' || authorFilter !== '' || yearFilter !== '') {
+        searchInfo.style.display = 'block';
+        let filterText = [];
+        
+        if (searchInput !== '') filterText.push(`judul "<strong>${searchInput}</strong>"`);
+        if (categoryFilter !== '') filterText.push(`kategori "<strong>${categoryFilter}</strong>"`);
+        if (authorFilter !== '') {
+            const authorSelect = document.getElementById('authorFilter');
+            const authorName = authorSelect.options[authorSelect.selectedIndex].text;
+            filterText.push(`pengarang "<strong>${authorName}</strong>"`);
+        }
+        if (yearFilter !== '') filterText.push(`tahun "<strong>${yearFilter}</strong>"`);
+        
+        searchInfoText.innerHTML = `
+            <strong>📊 Hasil Pencarian:</strong> 
+            Menampilkan ${visibleCount} dari ${totalCount} buku
+            ${filterText.length > 0 ? ' untuk ' + filterText.join(', ') : ''}
+        `;
+    } else {
+        searchInfo.style.display = 'none';
+    }
+
+    // Show "no results" message if no books found
+    let noResultsMsg = document.getElementById('noResultsMsg');
+    if (visibleCount === 0) {
+        if (!noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.id = 'noResultsMsg';
+            noResultsMsg.style.cssText = 'grid-column: 1/-1; text-align: center; padding: 60px 20px;';
+            noResultsMsg.innerHTML = `
+                <div style="font-size: 64px; margin-bottom: 20px; opacity: 0.5;">📚</div>
+                <h3 style="color: #1e3c72; font-size: 22px; font-weight: 600; margin-bottom: 10px;">
+                    Buku Tidak Ditemukan
+                </h3>
+                <p style="color: #64748b; font-size: 16px;">
+                    Coba gunakan kata kunci lain atau reset filter
+                </p>
+            `;
+            document.getElementById('bookGrid').appendChild(noResultsMsg);
+        } else {
+            noResultsMsg.style.display = 'block';
+        }
+    } else {
+        if (noResultsMsg) {
+            noResultsMsg.style.display = 'none';
+        }
+    }
+}
+
+function resetFilter() {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('categoryFilter').value = '';
+    document.getElementById('authorFilter').value = '';
+    document.getElementById('yearFilter').value = '';
+    filterBooks();
+}
+
 function showTab(tab) {
     // Hapus kelas active dari semua tab
     document.querySelectorAll('.tab-content').forEach(content => {
